@@ -25,22 +25,7 @@ How you install a skill depends on which agent/tool you use. In general: clone t
 
 ## Claude Code
 
-Skills load from `~/.claude/skills/` (all projects) or `.claude/skills/` (one project).
-
-```bash
-git clone git@github.com:StafLoker/old-man.git
-cd old-man
-
-# symlink each skill (keeps it updatable via git pull)
-ln -s "$PWD/skills/old-man" ~/.claude/skills/old-man
-ln -s "$PWD/skills/tech-plan" ~/.claude/skills/tech-plan
-```
-
-For project-only scope, put a skill under `.claude/skills/` at the root of that project instead.
-
-### Via plugin marketplace (alternative)
-
-This repo is also a Claude Code plugin marketplace — installs and updates through `/plugin` instead of `git`:
+This repo is also a Claude Code plugin marketplace — installs and updates through `/plugin`:
 
 ```
 /plugin marketplace add StafLoker/old-man
@@ -56,18 +41,8 @@ Clone the repo and copy or symlink the skill folder(s) into wherever your tool l
 ```bash
 git clone git@github.com:StafLoker/old-man.git
 ```
+Update later with `git pull`.
 
 # Usage
 
 Skills with a broad `description` (like `old-man`) are meant to trigger automatically when the task matches — no need to invoke them by name. Skills meant to be started explicitly (like `tech-plan`) get invoked by asking for what they do, e.g. *"let's plan a project"* / *"help me design a system"*.
-
-# Updating
-
-```bash
-cd old-man   # wherever you cloned it
-git pull
-```
-
-# License
-
-See [LICENSE](LICENSE).
