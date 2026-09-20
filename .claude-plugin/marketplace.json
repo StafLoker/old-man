@@ -1,0 +1,13 @@
+{
+  "name": "old-man",
+  "owner": {
+    "name": "StafLoker"
+  },
+  "plugins": [
+    {
+      "name": "old-man",
+      "source": "./",
+      "description": "Agent skills for disciplined, no-nonsense software engineering: code discipline (old-man) and collaborative technical planning (tech-plan)."
+    }
+  ]
+}
