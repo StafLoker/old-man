@@ -1,5 +1,5 @@
 <div align="center">
-   <h1><b>Old Man Skills</b></h1>
+   <h1><b>Old Man</b></h1>
    <p><i>~ Write code like a senior who's been woken at 3am by someone else's clever code ~</i></p>
    <p align="center">
       <a href="https://github.com/StafLoker/old-man/releases">Releases</a>
