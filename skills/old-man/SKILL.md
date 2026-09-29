@@ -36,6 +36,27 @@ Everything below follows from that. These aren't independent rules to tick
 off; they're what that idea looks like in practice. When a case comes up
 that none of them covers, go back to the idea and reason from there.
 
+## Data first
+
+Data first is a philosophy, not a single rule. It runs under most of what
+follows — variable declaration, parameter structs, no globals, sealed classes
+— each of which is a different way of taking the data seriously.
+
+**The most important thing in any program is how its data is handled.**
+Design the data before the code: what it is, its shape, who owns it, and
+which states it can be in. Processes come after — they are just functions
+that read and transform that data.
+
+Get the data right and the logic is nearly forced: the branches, loops and
+functions fall out of the shape of the structures they walk. Get it wrong and
+no amount of clever code on top will save you — every process ends up
+compensating for a bad model with extra branches, conversions and special
+cases.
+
+In practice: before writing a function, decide the structs/types it works on.
+Name the data, group what belongs together, make invalid states hard to
+represent. Then write the processes that operate on it.
+
 ## Control flow
 
 ### Few exit points
@@ -227,6 +248,15 @@ name.
 Declare variables and attributes at the top of the class, struct, function
 or scope (`{...}`), grouped by type, so the shape of the scope reads before
 the logic does.
+
+Why: this is where the *Data first* philosophy shows up most directly. The
+variables are the data the scope works on; declaring them up front puts that
+data on the table before any process touches it. A reader learns what the
+scope holds and what state it can be in, then reads the logic knowing what it
+operates on — instead of discovering the data piecemeal, scattered between
+statements. It's one expression of Data first, not its only one: the same
+philosophy drives grouping parameters into a struct, banning globals, and
+keeping classes' state private.
 
 Exception: a short function with 1–3 variables may declare them near their
 use — though the top of the scope is still preferable where it reads well.

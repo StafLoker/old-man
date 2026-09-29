@@ -14,7 +14,7 @@
 
 # Skills
 
-- **[old-man](skills/old-man/SKILL.md)** — enforces old-school senior-dev code discipline while writing any code: few exit points, explicit loop conditions, no hidden global state, differentiated error types, deterministic resource cleanup, minimal comments, no premature abstraction. Meant to trigger automatically whenever the agent is about to write code, in any language.
+- **[old-man](skills/old-man/SKILL.md)** — enforces old-school senior-dev code discipline while writing any code: data first, few exit points, explicit loop conditions, no hidden global state, differentiated error types, deterministic resource cleanup, minimal comments, no premature abstraction. Meant to trigger automatically whenever the agent is about to write code, in any language.
 - **[tech-plan](skills/tech-plan/SKILL.md)** — turns a conversation into a collaborative technical specification / architecture document. You make the decisions, the agent asks focused questions, proposes options, and writes the spec incrementally. Adapts to the project's shape (web app, CLI, library, service, etc.) instead of forcing a generic template.
 
 Each skill is self-contained: a `SKILL.md` with the instructions/description, plus a `references/` folder with extra material the agent reads as needed (language-specific guidance, templates, patterns).
@@ -34,6 +34,8 @@ This repo is also a Claude Code plugin marketplace — installs and updates thro
 
 Update later with `/plugin marketplace update old-man`, or check for updates from the `/plugin` menu.
 
+The plugin also ships session hooks (`hooks/hooks.json`) so the agent applies `old-man` on every code change instead of relying on the skill being picked up: one at session start tells it to load the skill, and one on every prompt reminds it of the key rules.
+
 ## Other agents / tools
 
 Clone the repo and copy or symlink the skill folder(s) into wherever your tool looks for custom instructions/skills/rules. Each `SKILL.md` is plain Markdown with a YAML frontmatter (`name`, `description`) — read that file directly, or paste its contents into a system prompt / project rules file, if your tool has no dedicated skills mechanism.
@@ -45,4 +47,4 @@ Update later with `git pull`.
 
 # Usage
 
-Skills with a broad `description` (like `old-man`) are meant to trigger automatically when the task matches — no need to invoke them by name. Skills meant to be started explicitly (like `tech-plan`) get invoked by asking for what they do, e.g. *"let's plan a project"* / *"help me design a system"*.
+Skills with a broad `description` (like `old-man`) are meant to trigger automatically when the task matches — no need to invoke them by name (in Claude Code the plugin hooks make `old-man` always-on). Skills meant to be started explicitly (like `tech-plan`) get invoked by asking for what they do, e.g. *"let's plan a project"* / *"help me design a system"*.

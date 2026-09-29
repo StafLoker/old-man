@@ -1,0 +1,26 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf 'OLD-MAN MODE ACTIVE. Before writing, generating or editing any source code in this session, load the old-man:old-man skill with the Skill tool and follow it. Applies to every code change, not only when asked for clean code.'",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '%s' '{\"hookSpecificOutput\":{\"hookEventName\":\"UserPromptSubmit\",\"additionalContext\":\"OLD-MAN MODE ACTIVE. Any code you write follows the old-man skill (load it if not loaded): data first, few exits, explicit loop conditions, differentiated errors, no globals, minimal comments, no premature abstraction.\"}}'",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}
