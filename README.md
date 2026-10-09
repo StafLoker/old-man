@@ -16,6 +16,8 @@
 
 - **[old-man](skills/old-man/SKILL.md)** — enforces old-school senior-dev code discipline while writing any code: data first, few exit points, explicit loop conditions, no hidden global state, differentiated error types, deterministic resource cleanup, minimal comments, no premature abstraction. Meant to trigger automatically whenever the agent is about to write code, in any language.
 - **[tech-plan](skills/tech-plan/SKILL.md)** — turns a conversation into a collaborative technical specification / architecture document. You make the decisions, the agent asks focused questions, proposes options, and writes the spec incrementally. Adapts to the project's shape (web app, CLI, library, service, etc.) instead of forcing a generic template.
+- **[user-manual](skills/user-manual/SKILL.md)** — writes, fixes and updates end-user documentation: task-first pages, numbered one-action steps with a visible result, tiered warnings, plain short sentences, troubleshooting. Modeled on real product manuals.
+- **[tech-docs](skills/tech-docs/SKILL.md)** — writes, fixes and updates developer/operator documentation: one reader need per page (overview, tutorial, how-to, reference, decision record), fixed skeletons, constraints inline, staleness-resistant. Checks docs against the code.
 
 Each skill is self-contained: a `SKILL.md` with the instructions/description, plus a `references/` folder with extra material the agent reads as needed (language-specific guidance, templates, patterns).
 
