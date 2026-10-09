@@ -18,6 +18,23 @@
             "type": "command",
             "command": "printf '%s' '{\"hookSpecificOutput\":{\"hookEventName\":\"UserPromptSubmit\",\"additionalContext\":\"OLD-MAN MODE ACTIVE. Any code you write follows the old-man skill (load it if not loaded): data first, few exits, explicit loop conditions, differentiated errors, no globals, minimal comments, no premature abstraction.\"}}'",
             "timeout": 5
+          },
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/docs-prompt.sh",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/docs-edit.sh",
+            "timeout": 5
           }
         ]
       }
